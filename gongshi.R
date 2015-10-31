@@ -141,7 +141,22 @@ abs(sunproper),"%p",sunprotxt,", ",abs(buchaeper),"%p",bopertxt,"한 것입니다.")
 
 
 
+
+## 발행공시 실적보고서
+
+iss
+
+
+
+
+
+
+
+
+
+
 ## link 수집
+
 url<-"https://dart.fss.or.kr/dsac001/mainAll.do"
 
      remDr$navigate(url)
@@ -221,6 +236,9 @@ df<-rbind(df,df.temp)
 
 }
 
+
+##### get contents and posting twitter & facebook
+
 foriend<-nrow(df)
 foriend
 
@@ -240,27 +258,4 @@ tw<-qreport(df[i,3])
 
 } ## for i end
 
-
-url<-"https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20151030000510"
-
-
-url<-paste0("https://dart.fss.or.kr",url_list[3])
-     remDr$navigate(url)
-test<-(remDr$getPageSource()[[1]])
-te<-html(test)
-testurl<-html_attr(html_nodes(te, 'iframe'), 'src')
-testurl
-
-remDr$screenshot(display=T)
-
-url<-paste0("https://dart.fss.or.kr",testurl)
-     remDr$navigate(url)
-tt<-html(url)
-title<-html_text(html_nodes(tt,'p a'))
-Encoding(title)<-"UTF-8"
-title
-
-con1<-html_text(html_nodes(tt,'table.nb tbody tr td'))
-Encoding(con1)<-"UTF-8"
-con1
 
